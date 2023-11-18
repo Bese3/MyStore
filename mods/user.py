@@ -31,4 +31,5 @@ class User(Base, base):
                           cascade='all, delete')
     friends = relationship('Friend', backref='user',
                           cascade='all, delete')
-    
+    hobbies = relationship('Hobby', backref='user',
+                          cascade='all, delete')    
