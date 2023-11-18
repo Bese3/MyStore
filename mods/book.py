@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+books class
+"""
 from mods.base import Base
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
@@ -15,5 +18,5 @@ class Books(Base, base):
     Author = Column(String(60), nullable=False)
     user_id = Column(String(60), ForeignKey('users.id'),
                      nullable=False)
-    special_link = Column(String(120))
+    link = Column(String(120))
     description = Column(String(1024))

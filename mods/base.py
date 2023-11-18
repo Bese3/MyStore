@@ -53,7 +53,7 @@ class Base():
         self.updated_at = datetime.now()
         # storage saving to be added
 
-    def to_json(self):
+    def to_json(self, iso=False):
         """
         The function `to_json` converts an object's attributes
         into a dictionary and adds additional information such
@@ -63,8 +63,9 @@ class Base():
         my_dict.update(self.__dict__)
         my_dict.update({'__class__':
                         (str(type(self)).split('.')[-1]).split('\'')[0]})
-        my_dict['created_at'] = self.created_at.isoformat()
-        my_dict['updated_at'] = self.updated_at.isoformat()
+        if iso == True:
+            my_dict['created_at'] = self.created_at.isoformat()
+            my_dict['updated_at'] = self.updated_at.isoformat()
         return my_dict
 
     def delete(self):
