@@ -2,10 +2,9 @@
 """
 Portfolio class
 """
-from mods.base import Base
+from mods.base import Base, base
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
-base = declarative_base()
 
 
 class Portfolio(Base, base):

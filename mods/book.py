@@ -2,13 +2,12 @@
 """
 books class
 """
-from mods.base import Base
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
-base = declarative_base()
+from mods.base import Base, base
 
 
-class Books(Base, base):
+class Book(Base, base):
     """
     The class "Books" represents a table in a database with
     columns for name, author, user ID, special link, and description.
