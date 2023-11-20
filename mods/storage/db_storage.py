@@ -50,8 +50,7 @@ class DBStorage:
                                       '{}:{}@{}:3306/{}'.format('mystore_dev',
                                                                 'mystore_dev_pwd',
                                                                 'localhost',
-                                                                'mystore_dev_db'),
-                                                                pool_pre_ping=True)
+                                                                'mystore_dev_db'))
 
     def all(self, cls=None):
         """

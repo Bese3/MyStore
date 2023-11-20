@@ -14,7 +14,7 @@ class Book(Base, base):
     """
     __tablename__ = 'books'
     name = Column(String(60), nullable=False)
-    Author = Column(String(60), nullable=False)
+    author = Column(String(60), nullable=False)
     user_id = Column(String(60), ForeignKey('users.id'),
                      nullable=False)
     link = Column(String(120))

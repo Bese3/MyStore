@@ -47,7 +47,8 @@ class Base():
                 kwargs['updated_at'] = datetime.strptime(kwargs['updated_at'],
                                                          '%Y-%m-%dT%H:%M:%S.%f')
             self.__dict__.update(kwargs)
-        dbstorage.new(self)
+        if type(self) is not Base:
+            dbstorage.new(self)
 
     def save(self):
         """
@@ -56,8 +57,9 @@ class Base():
         """
         from mods import dbstorage
         self.updated_at = datetime.now()
-        dbstorage.new(self)
-        dbstorage.save()
+        if type(self) is not Base:
+            dbstorage.new(self)
+            dbstorage.save()
 
     def to_json(self, iso=False):
         """
@@ -80,7 +82,8 @@ class Base():
         """
         The above function deletes the object that it is called on.
         """
-        # storage deletion to be added
+        from mods import dbstorage
+        dbstorage.delete(self)
         del self
 
     def __str__(self):
