@@ -5,7 +5,7 @@ db storage for models
 from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy.orm import declarative_base
-from os import getenv
+# from os import getenv
 import MySQLdb
 from mods.book import Book
 from mods.friend import Friend

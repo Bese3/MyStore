@@ -101,19 +101,19 @@ class StoreCommand(cmd.Cmd):
         if len(args) == 1:
             print("** instance id missing **")
             return
-        try:
-            if args[0] + "." + eval(args[1]) not in\
-                 dbstorage.all().keys():
-                print("** no instance found **")
-                return
-            del dbstorage.all()[args[0] + "." + eval(args[1])]
-            dbstorage.save()
-        except Exception:
-            if args[0] + "." + args[1] not in dbstorage.all().keys():
-                print("** no instance found **")
-                return
-            del dbstorage.all()[args[0] + "." + args[1]]
-            dbstorage.save()
+            # if args[0] + "." + eval(args[1]) not in\
+            #      dbstorage.all().keys():
+            #     print("** no instance found **")
+            #     return
+            # dbstorage.delete()[args[0] + "." + eval(args[1])]
+            # # del dbstorage.all()[args[0] + "." + eval(args[1])]
+            # dbstorage.save()
+        if args[0] + "." + args[1] not in dbstorage.all().keys():
+            print("** no instance found **")
+            return
+        dbstorage.delete(dbstorage.all()[args[0] + "." + args[1]])
+        # del dbstorage.all()[args[0] + "." + args[1]]
+        dbstorage.save()
 
     def do_all(self, args):
         """`all`Usage: all or all <class>
