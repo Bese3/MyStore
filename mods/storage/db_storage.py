@@ -76,6 +76,33 @@ class DBStorage:
         """
         self.__session.add(obj)
 
+    def get(self, cls, id):
+        """
+        Returns the object based on the class name and its ID, or
+        None if not found
+        """
+        if cls not in classes.values():
+            return None
+
+        all_cls = self.all(cls)
+        for value in all_cls.values():
+            if (value.id == id):
+                return value
+            if type(value) is Friend and value.user_id == id:
+                return value
+
+        return None
+
+    def get_relation(self, cls, id, sub_class):
+        """
+        The function `get_relation` retrieves a relation from the
+        database based on the provided class, id, and sub_class.
+        """
+        if cls not in classes.values():
+            return None
+        my_query = self.__session.query(cls).filter(eval("User." + sub_class)).filter(User.id==id).all()
+        return my_query
+
     def save(self):
         """
         saving new object

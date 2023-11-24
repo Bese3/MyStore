@@ -19,68 +19,30 @@ def close_db(error):
     dbstorage.close()
 
 
-@app.route("/portfolios", strict_slashes=False)
-def portfolio():
+@app.route("/all", strict_slashes=False)
+def all():
     """
     The function "portfolio" retrieves a random portfolio from
     a database and returns it as a JSON object.
     """
     all_portfolios = [i for i in dbstorage.all(Portfolio).values()]
+    all_books = [i for i in dbstorage.all(Book).values()]
+    all_dict = []
     try:
         my_port = random.choice(all_portfolios)
+        all_dict.append(my_port.to_json())
     except IndexError:
-        return jsonify({})
-    response = make_response((my_port.to_json()))
-    response.headers['Access-Control-Allow-Origin'] = '*'
-    return response
-
-
-@app.route("/books", strict_slashes=False)
-def book():
-    """
-    The function selects a random book from
-    a list of all books and returns it as a JSON object."""
-    all_books = [i for i in dbstorage.all(Book).values()]
+        pass
     try:
         my_book = random.choice(all_books)
+        all_dict.append(my_book.to_json())
     except IndexError:
-        return jsonify({})
-    response = make_response((my_book.to_json()))
-    response.headers['Access-Control-Allow-Origin'] = '*'
-    return response
-
-
-@app.route("/musics", strict_slashes=False)
-def music():
-    """
-    The function selects a random music from
-    a list and returns it as a JSON object.
-    """
-    all_musics = [i for i in dbstorage.all(Music).values()]
-    try:
-        my_music = random.choice(all_musics)
-    except IndexError:
-        return jsonify({})
-    response = make_response((my_music.to_json()))
-    response.headers['Access-Control-Allow-Origin'] = '*'
-    return response
-
-
-@app.route("/hobbies", strict_slashes=False)
-def hobbies():
-    """
-    The function "hobbies" retrieves a random hobby from
-    a database and returns it as a JSON object.
-    """
-    all_hobbies = [i for i in dbstorage.all(Hobby).values()]
-    try:
-        my_hobby = random.choice(all_hobbies)
-    except IndexError:
-        return jsonify({})
-    response = make_response((my_hobby.to_json()))
+        pass
+    response = make_response(all_dict, 200)
     response.headers['Access-Control-Allow-Origin'] = '*'
     return response
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0',
+            port=5000)
