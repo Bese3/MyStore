@@ -1,0 +1,404 @@
+
+html {
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #6b6b6b;
+  overflow-x: hidden;
+}
+.parallax-window h4 {
+  display: flex;
+  position: relative;
+  justify-content: end;
+  height: 50px;
+  width: 100%;
+  align-items: center;
+  padding-right: 10px;
+  margin-bottom: 150px;
+  color:transparent;
+  box-shadow: inset 0 0 0 0 #8a8488;
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+}
+
+.parallax-window h4:hover {
+  display: flex;
+  box-shadow: inset 400px 60px 0 0 #b1abaf;
+  color: rgba(11, 11, 11, 0.584);
+  opacity: 50%;
+}
+
+.parallax-window a {
+  color: inherit;
+  opacity: 100%;
+}
+
+a,
+button {
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.container-fluid {
+  max-width: 1200px;
+}
+
+.tm-bg-black-transparent {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.tm-bg-white-transparent {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.tm-bg-green {
+  background-color: #98cb00;
+}
+
+.tm-bg-orange {
+  background-color: #cc6733;
+}
+
+.tm-bg-blue {
+  background-color: #3398cc;
+}
+
+.tm-bg-dark-gray {
+  background-color: #676767;
+}
+
+/*
+  Welcome section
+*/
+/* #tmWelcome {
+  position: relative;
+  display: flex;
+  align-items: center;
+  /* margin-top: 0px; */
+} */
+
+.tm-brand-container-outer {
+  margin-top: -400px;
+}
+
+.tm-brand-container-inner {
+  max-width: 580px;
+  width: 100%;
+}
+
+.tm-brand-container {
+  padding: 75px 110px;
+}
+
+.tm-brand-name {
+  font-size: 3.8rem;
+}
+
+.tm-brand-description {
+  font-size: 1.4rem;
+}
+
+.parallax-window {
+  min-height: 1100px;
+  background: transparent;
+}
+
+#tmContact {
+  min-height: 1197px;
+}
+
+.tm-welcome-container {
+  min-height: 400px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+}
+
+.tm-welcome-title {
+  margin-bottom: 40px;
+}
+
+.tm-welcome-left {
+  padding-right: 30px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.tm-welcome-left-col {
+  display: flex;
+  align-items: center;
+}
+
+.tm-welcome-right {
+  color: white;
+  background-color: #986665;
+  padding: 80px 43px 70px;
+  height: 100%;
+}
+
+.tm-welcome-icon {
+  margin-bottom: 50px;
+  display: block;
+  text-align: center;
+}
+
+/*
+  Portfolio section
+*/
+
+#tmPortfolio {
+  display: flex;
+  padding-top: 80px;
+  background: inherit;
+  background-image: inherit;
+  overflow-x: auto;
+}
+
+.tm-portfolio-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+.tm-portfolio-name {
+  position: relative;
+  width: 330px;
+  height: 220px;
+  font-size: 2rem;
+  padding: 70px 95px;
+  display:inline-flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+
+  color: #676767;
+  --c: no-repeat linear-gradient(#41bae2 0 0);
+	background: 
+	  var(--c)  calc(-101% + var(--p,0%)) 100%,
+	  var(--c)  calc( 201% - var(--p,0%)) 0;
+	background-size: 50.1% var(--p,.08em);
+	transition: .3s var(--t,0s), background-position .3s calc(.3s - var(--t,0s));
+	background-color: papayawhip;
+	opacity: 80%;
+}
+
+.tm-portfolio-description {
+  padding: 50px 65px;
+  display: none;
+  border: 1px solid #FF5A5F;
+  margin-left: 20px;
+  background-color: #fff;
+
+  white-space: nowrap;
+  box-shadow: inset 0 0 0 0 #5e5c5c;
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+}
+.tm-portfolio-description:hover {
+  --p: 101%;
+  --t: 0.3s;
+  color: #fff;
+}
+
+.tm-portfolio-name:hover {
+  display: flex;
+  --p: 101%;
+  --t: 0.3s;
+  color: #fff;
+}
+
+.tm-portfolio-description h3 {
+  margin-bottom: 20px;
+}
+
+.tm-text-green {
+  color: #98cb00;
+}
+
+.tm-text-orange {
+  color: #cc6733;
+}
+
+.tm-text-blue {
+  color: #3398cc;
+}
+
+.tm-text-dark-gray {
+  color: #676767;
+}
+
+.tm-title-small {
+  font-size: 1.3rem;
+}
+
+p {
+  line-height: 1.8;
+}
+
+/*
+  Contact section
+*/
+
+#tmContact {
+  padding-top: 95px;
+}
+
+.tm-contact-item {
+  width: 33.3334%;
+  max-width: 345px;
+  height: auto;
+  min-height: 420px;
+  margin-right: 35px;
+  background-color: white;
+  padding: 54px 34px 44px;
+}
+
+.tm-contact-item:last-child {
+  margin-right: 0;
+}
+
+.tm-contact-items-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 130px;
+}
+
+.tm-contact-item:hover {
+  transform: scale(1.05);
+  will-change: transform;
+  opacity: 85%;
+  border: 1px solid #FF5A5F;
+}
+
+.tm-contact-item-icon {
+  margin-bottom: 45px;
+  width: 100%;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#tmContactForm {
+  width: 100%;
+  max-width: 680px;
+  padding: 45px 45px 30px;
+  margin-bottom: 95px;
+}
+
+.form-group {
+  max-width: 355px;
+}
+
+.form-control {
+  background: transparent;
+  border-color: #999999;
+  padding: 15px 10px;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.tm-btn-submit {
+  background-color: #999999;
+  padding: 12px 30px;
+  font-size: 1.2rem;
+}
+
+.tm-btn-submit:focus,
+.tm-btn-submit:hover {
+  background-color: #676767;
+}
+
+.tm-copyright-text {
+  margin-bottom: 0px;
+  text-align: center;
+  margin-top: 50%;
+}
+
+.tm-link {
+  color: #676767;
+}
+
+@media (max-width: 1054px) {
+  .tm-contact-item-icon {
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 991px) {
+  .tm-contact-items-container {
+    flex-direction: column;
+  }
+
+  .tm-contact-item {
+    width: auto;
+    max-width: 680px;
+    min-height: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+  }
+
+  .tm-contact-item:last-child {
+    margin-right: auto;
+    margin-bottom: 0;
+  }
+
+  #tmContactForm {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 730px) {
+  .tm-portfolio-item {
+    flex-direction: column;
+  }
+
+  .tm-portfolio-name {
+    justify-content: center;
+  }
+
+  .tm-portfolio-name,
+  .tm-portfolio-description {
+    width: 100%;
+  }
+
+  .tm-portfolio-description {
+    padding: 20px 30px;
+  }
+}
+
+@media (max-width: 572px) {
+  .tm-brand-container {
+    padding: 45px;
+  }
+}
+
+@media (max-width: 443px) {
+  .tm-brand-name {
+    font-size: 3rem;
+  }
+
+  .tm-brand-container {
+    padding: 25px;
+  }
+}
+
+.book-logo {
+  margin-top: 80px;
+  margin-left: 10px;
+}

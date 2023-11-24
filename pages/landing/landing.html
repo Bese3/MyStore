@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/templatemo-style.css" />
+    <title>Mini Project for portfolio</title>
+  
+  </head>
+  <body>
+    <!-- <header style="height: 60px; width: 100%;" class="parallax-window data-parallax="scroll" data-image-src="img/mini-profile-bg-01.jpg"> -->
+      
+    <!-- </header> -->
+    <!-- Welcome Section -->
+    <section id="tmWelcome" class="parallax-window" data-parallax="scroll" data-image-src="img/mini-profile-bg-01.jpg">
+      <h4><a href="landing.html">Login</a></h4>
+      <div class="container-fluid tm-brand-container-outer">
+        <div class="row">
+          <div class="col-12">
+            <!-- Logo Area -->
+            <!-- Black transparent bg -->
+            <div class="ml-auto mr-0 tm-bg-black-transparent text-white tm-brand-container-inner">
+              <div class="tm-brand-container text-center">
+                <h1 class="tm-brand-name">My Store</h1>
+                <p class="tm-brand-description mb-0">start your growth here.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Welcome section -->
+
+    <!-- Portfolio section -->
+    <section id="tmPortfolio">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="tm-portfolio-item">
+              <div class="tm-portfolio-name tm-bg-green portfolio">
+                Portfolios Available
+              </div>
+
+              <div class="tm-portfolio-description port">
+                <h3 class="tm-text-green">
+                  <!-- <span class="tm-title-small">(2019 January to Present)</span> -->
+                </h3>
+                <p class="mb-0 port-desc-1">
+                  new Company description
+                </p>
+              </div>
+              <div class="tm-portfolio-description port">
+                <h3 class="tm-text-green">
+                  <!-- <span class="tm-title-small">(2019 January to Present)</span> -->
+                </h3>
+                <p class="mb-0 port-desc-2">
+                  new Company description
+                </p>
+              </div>
+              <div class="tm-portfolio-description port">
+                <h3 class="tm-text-green">
+                  <!-- <span class="tm-title-small">(2019 January to Present)</span> -->
+                </h3>
+                <p class="mb-0 port-desc-3">
+                  new Company description
+                </p>
+              </div>
+            </div>
+
+            <div class="tm-portfolio-item">
+              <div class="tm-portfolio-name tm-bg-orange book">
+                Books Recommended
+              </div>
+              <div class="tm-portfolio-description books">
+                <h3 class="tm-text-orange book-1">
+                </h3>
+                <p class="mb-0 book-desc-1">
+                </p>
+              </div>
+              <div class="tm-portfolio-description books">
+                <h3 class="tm-text-orange book-2">
+                </h3>
+                <p class="mb-0 book-desc-2">
+                </p>
+              </div>
+              <div class="tm-portfolio-description books">
+                <h3 class="tm-text-orange book-3">
+                </h3>
+                <p class="mb-0 book-desc-3">
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End portfolio section -->
+
+    <!-- create section -->
+    <div id="tmContact" class="parallax-window" data-parallax="scroll" data-image-src="img/mini-profile-bg-02.jpg">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="tm-contact-items-container">
+              <div class="tm-contact-item">
+                <i class="fas fa-5x fa-briefcase tm-contact-item-icon"></i>
+                <p class="mb-0 book-logo">
+                  Create your own book store
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <footer class="col-12">
+            <p class="tm-copyright-text">
+            Copyright 2023 Mini Project Page 
+          </footer>
+        </div>
+      </div>
+
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/parallax.min.js"></script>
+    <script src="../../client/landing.js"></script>
+    <script>
+      $('.portfolio').on('click', () => {
+        $('.port').css('display', 'inline');
+        $('.port').css('box-shadow', 'inset 600px 0 0 0 #5e5c5c');
+      })
+      $('.book').on('click', () => {
+        $('.books').css('display', 'inline');
+        $('.books').css('box-shadow', 'inset 600px 0 0 0 #5e5c5c');
+      })
+    </script>
+    <script>
+      function detectMsBrowser() {
+        using_ms_browser =
+          navigator.appName == "Microsoft Internet Explorer" ||
+          (navigator.appName == "Netscape" &&
+            navigator.appVersion.indexOf("Edge") > -1) ||
+          (navigator.appName == "Netscape" &&
+            navigator.appVersion.indexOf("Trident") > -1);
+
+        if (using_ms_browser == true) {
+          alert(
+            "Please use Chrome or Firefox for the best browsing experience!"
+          );
+        }
+      }
+      function setBrandMarginTop() {
+        var bottomContainerHeight = $(".tm-welcome-container").height();
+
+        $(".tm-brand-container-outer").css({
+          "margin-top": -bottomContainerHeight + "px"
+        });
+      }
+
+      $(function() {
+        setBrandMarginTop();
+        detectMsBrowser();
+
+        // Handle window resize event
+        $(window).resize(function() {
+          setBrandMarginTop();
+        });
+      });
+    </script>
+  </body>
+</html>
