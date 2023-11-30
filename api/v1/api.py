@@ -5,7 +5,7 @@ from flask_cors import CORS
 from mods import dbstorage
 app = Flask(__name__)
 app.register_blueprint(app_collection)
-# CORS(app, resource={})
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 
 @app.teardown_appcontext

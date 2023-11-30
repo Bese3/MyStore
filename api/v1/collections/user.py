@@ -3,7 +3,7 @@
 user friend API
 """
 from api.v1.collections import app_collection
-from flask import make_response, jsonify, abort
+from flask import make_response, jsonify, abort, request
 from mods.user import User
 from mods.friend import Friend
 from mods import dbstorage
@@ -17,6 +17,49 @@ def get_users():
     if all_users is None:
         abort(404)
     response = make_response([i.to_json() for i in all_users], 200)
+    response.headers['Access-Control-Allow-Origin'] = origin
+    return response
+
+
+@app_collection.route('/user', strict_slashes=False,
+                      methods=['POST'])
+def post_user():
+    """
+    The function `post_user` creates a new user object with
+    the given user_id and saves it to the database,
+    and returns a JSON response with the user object.
+    """
+    if not request.get_json():
+        abort(400, description="Not supported type")
+    if 'email' not in request.get_json():
+        abort(400, description="email missing")
+    if 'password' not in request.get_json():
+        abort(400, description="password missing")
+    ig_keys = ['id', 'created_at', 'updated_at', 'user_id']
+    data = {}
+    for k, v in request.get_json().items():
+        if k not in ig_keys:
+            data[k] = v
+    new_user = User(**data)
+    new_user.save()
+    response = make_response(new_user.to_json(), 201)
+    response.headers['Access-Control-Allow-Origin'] = origin
+    return response
+
+
+@app_collection.route("/<user_id>/delete_account", strict_slashes=False,
+                      methods=['DELETE'])
+def delete_user(user_id):
+    """
+    The function `delete_user` deletes a user from the database and
+    returns a response indicating whether the deletion was successful.
+    """
+    user = dbstorage.get(User, user_id)
+    if user is None:
+        abort(404)
+    dbstorage.delete(user)
+    dbstorage.save()
+    response = make_response({"Delete": "True"}, 200)
     response.headers['Access-Control-Allow-Origin'] = origin
     return response
 
