@@ -90,7 +90,6 @@ class DBStorage:
                 return value
             if type(value) is Friend and value.user_id == id:
                 return value
-
         return None
 
     def get_relation(self, cls, id, sub_class):
