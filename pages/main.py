@@ -1,13 +1,14 @@
 #!/usr/bin/python3
 from flask import Flask, make_response, url_for, redirect, render_template, session, abort
 from authlib.integrations.flask_client import OAuth
+from os import getenv
 app = Flask(__name__)
 app.secret_key = "secret_key"
 oauth = OAuth(app)
 oauth.register(
     "google",
-    client_id='179378167801-28sqsjfef75o1aumirn09o8fp8c9d6db.apps.googleusercontent.com',
-    client_secret='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',
+    client_id=getenv('client_id'),
+    client_secret=getenv('client_secret'),
     access_token_url='https://accounts.google.com/o/oauth2/token',
     access_token_params=None,
     authorize_url='https://accounts.google.com/o/oauth2/auth',
