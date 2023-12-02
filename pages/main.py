@@ -23,7 +23,7 @@ oauth.register(
 def login():
     try:
         if 'user' in session:
-            abort(404)
+            return redirect(url_for('home'))
     except KeyError:
         abort(401)
     return oauth.google.authorize_redirect(redirect_uri=url_for('authorize', _external=True))
@@ -32,7 +32,7 @@ def login():
 def home():
     if 'user' not in session:
         return oauth.google.authorize_redirect(redirect_uri=url_for('authorize', _external=True))
-    return render_template('index.html', user=session['user'])
+    return render_template('index.html')
 
 
 @app.route("/authorize", strict_slashes=False)
@@ -40,6 +40,10 @@ def authorize():
     token = oauth.google.authorize_access_token()
     session['user'] = token
     return redirect(url_for("home"))
+
+@app.route("/landing", strict_slashes=False)
+def get_landing():
+    return render_template("landing.html")
 
 
 @app.route("/logout", strict_slashes=False)
@@ -49,7 +53,7 @@ def logout():
     else:
         abort(401)
     session.clear()
-    return redirect(url_for('login'))
+    return redirect(url_for('get_landing'))
 
 
 @app.route("/session", strict_slashes=False)

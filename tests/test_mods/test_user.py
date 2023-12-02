@@ -21,6 +21,9 @@ class TestUser(unittest.TestCase):
         }
         self.user = User(**new_dict)
 
+    def tearDown(self):
+       self.user.delete() 
+
     def test_docs(self):
         """
         The function `test_docs` checks that the documentation

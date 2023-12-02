@@ -17,6 +17,9 @@ def get_hobbies(user_id):
     The function `get_hobbies` retrieves hobbies associated
     with a user and returns them as a JSON response.
     """
+    user = dbstorage.get(User, user_id)
+    if user is None:
+        abort(404)
     hobbies = dbstorage.get_relation(Hobby, user_id, "hobbies")
     if hobbies is None:
         abort(404)

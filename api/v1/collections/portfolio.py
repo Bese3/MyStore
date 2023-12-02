@@ -17,6 +17,9 @@ def get_portfolios(user_id):
     The function `get_portfolios` retrieves portfolios associated
     with a user and returns them as a JSON response.
     """
+    user = dbstorage.get(User, user_id)
+    if user is None:
+        abort(404)
     portfolios = dbstorage.get_relation(Portfolio, user_id, "portfolios")
     if portfolios is None:
         abort(404)

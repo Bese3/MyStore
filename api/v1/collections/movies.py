@@ -17,6 +17,9 @@ def get_movies(user_id):
     The function `get_movies` retrieves movies associated
     with a user and returns them as a JSON response.
     """
+    user = dbstorage.get(User, user_id)
+    if user is None:
+        abort(404)
     movies = dbstorage.get_relation(Movie, user_id, "movies")
     if movies is None:
         abort(404)

@@ -17,6 +17,9 @@ def get_musics(user_id):
     The function `get_musics` retrieves musics associated
     with a user and returns them as a JSON response.
     """
+    user = dbstorage.get(User, user_id)
+    if user is None:
+        abort(404)
     musics = dbstorage.get_relation(Music, user_id, "musics")
     if musics is None:
         abort(404)

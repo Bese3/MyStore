@@ -1,16 +1,17 @@
 let MyServer = "http://127.0.0.1:5001/api/v1/"
 $(document).ready(function () {
+    let user_id;
     $.ajax({
         type: 'GET',
         url: 'http://127.0.0.1:5002/session',
         success: (json) => {
-            console.log(json.userinfo)
+            // console.log(json.userinfo)
             $.ajax({
                 type: 'GET',
                 url: MyServer + 'users',
                 success: (json2) => {
+                    let users = json2;
                     let Available = false;
-                    let user_id;
                     for (let i = 0; i < json2.length; i++){
                         if (json2[i].email === json.userinfo.email) {
                             Available = true;
@@ -34,9 +35,81 @@ $(document).ready(function () {
                             }
                         })
                     }
+                    $.ajax({
+                        type: 'GET',
+                        url: MyServer + user_id + "/portfolios",
+                        success: (json) => {
+                            // console.log(json)
+                            for (let i = 0; i < json.length; i++){
+                                $('.port-list').append('<li data-id=' + json[i].id +  '><input type="radio" name="port" value=' + json[i].id + '><a href=' + json[i].link + ' target="_blank">'
+                                + json[i].name + '</a></li>')
+                            }
+                            $.ajax({
+                                type: 'GET',
+                                url: MyServer + user_id + "/books",
+                                success: (json) => {
+                                    // console.log(json)
+                                    for (let i = 0; i < json.length; i++){
+                                        $('.book-list').append('<li data-id=' + json[i].id +  '><input type="radio" name="book" value=' + json[i].id + '><a href=' + json[i].link + ' target="_blank">'
+                                        + json[i].name + '</a></li>')
+                                    }
+                                    $.ajax({
+                                        type: 'GET',
+                                        url: MyServer + user_id + "/movies",
+                                        success: (json) => {
+                                            // console.log(json)
+                                            for (let i = 0; i < json.length; i++){
+                                                $('.movie-list').append('<li data-id=' + json[i].id +  '><input type="radio" name="movie" value=' + json[i].id + '><a href=' + json[i].link + ' target="_blank">'
+                                                + json[i].name + '</a></li>')
+                                            }
+                                            $.ajax({
+                                                type: 'GET',
+                                                url: MyServer + user_id + "/musics",
+                                                success: (json) => {
+                                                    // console.log(json)
+                                                    for (let i = 0; i < json.length; i++){
+                                                        $('.music-list').append('<li data-id=' + json[i].id +  '><input type="radio" name="music" value=' + json[i].id + '><a href=' + json[i].link + ' target="_blank">'
+                                                        + json[i].name + '</a></li>')
+                                                    }
+                                                    $.ajax({
+                                                        type: 'GET',
+                                                        url: MyServer + user_id + "/friends",
+                                                        success: (json) => {
+                                                            // console.log(json)
+                                                            for (let i = 0; i < json.length; i++){
+                                                                let friend_id = json[i].friend_id;
+                                                                for (let j = 0; j < users.length; j++){
+                                                                    if (friend_id === users[j].id){
+                                                                        $('.friend-list').append('<li data-id=' + users[j].id + '><a>'
+                                                                        + users[j].first_name + '</a></li>')
+                                                                    }
+                                                                }                                                                
+                                                            }
+                                                            $.ajax({
+                                                                type: 'GET',
+                                                                url: MyServer + user_id + "/hobbies",
+                                                                success: (json) => {
+                                                                    // console.log(json)
+                                                                    for (let i = 0; i < json.length; i++){
+                                                                        $('.hobby-list').append('<li data-id=' + json[i].id +  '><input type="radio" name="hobby" value=' + json[i].id + '><a href=' + json[i].link + ' target="_blank">'
+                                                                        + json[i].name + '</a></li>')
+                                                                    }
+                                                                }
+                                                            })
+                                                        }
+                                                    })
+                                                }
+                                            })
+                                        }
+                                    })
+                                }
+                            })
+                        }
+                    })
 
                 }
             })
         }
+
     })
 })

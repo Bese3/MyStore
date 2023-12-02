@@ -17,6 +17,9 @@ def get_books(user_id):
     The function `get_books` retrieves books associated
     with a user and returns them as a JSON response.
     """
+    user = dbstorage.get(User, user_id)
+    if user is None:
+        abort(404)
     books = dbstorage.get_relation(Book, user_id, "books")
     if books is None:
         abort(404)

@@ -29,10 +29,10 @@ body {
 
 .parallax-window h4:hover {
   display: flex;
-  box-shadow: inset 400px 60px 0 0 #b1abaf;
+  /* box-shadow: inset 400px 60px 0 0 #b1abaf;
   color: rgba(11, 11, 11, 0.584);
   opacity: 50%;
-}
+} */
 
 .parallax-window a {
   color: inherit;
