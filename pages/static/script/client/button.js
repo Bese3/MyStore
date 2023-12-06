@@ -43,7 +43,7 @@ function listner (button, erase_list, erase_crud, type, name) {
                 // console.log($('input.port').val())
                 $.ajax({
                     type: 'GET',
-                    url: 'http://52.201.220.122/session',
+                    url: 'http://web-02.besufikadyilma.tech/session',
                     success: (json) => {
                         $.ajax({
                             type: 'GET',
@@ -92,7 +92,7 @@ function delete_item (id, name) {
     let MyServer = "http://52.201.220.122/api/v1/"
     $.ajax({
         type: 'GET',
-        url: 'http://52.201.220.122/session',
+        url: 'http://web-02.besufikadyilma.tech/session',
         success: (json) => {
             $.ajax({
                 type: 'GET',
