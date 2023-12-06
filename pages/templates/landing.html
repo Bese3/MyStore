@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../static/css/landing/all.min.css" />
     <link rel="stylesheet" href="../static/css/landing/bootstrap.min.css" />
     <link rel="stylesheet" href="../static/css/landing/templatemo-style.css" />
-    <title>Mini Project for portfolio</title>
+    <title>My Store</title>
   
   </head>
   <body>
@@ -17,7 +17,7 @@
     <!-- </header> -->
     <!-- Welcome Section -->
     <section id="tmWelcome" class="parallax-window" data-parallax="scroll" data-image-src="../static/images/landing//mini-profile-bg-01.jpg">
-      <h4><a href="http://127.0.0.1:5002/login">Login</a></h4>
+      <h4><a href="/login" style="color: black;">Login</a></h4>
       <div class="container-fluid tm-brand-container-outer">
         <div class="row">
           <div class="col-12">
@@ -25,8 +25,8 @@
             <!-- Black transparent bg -->
             <div class="ml-auto mr-0 tm-bg-black-transparent text-white tm-brand-container-inner">
               <div class="tm-brand-container text-center">
-                <h1 class="tm-brand-name">My Store</h1>
-                <p class="tm-brand-description mb-0">start your growth here.</p>
+                <h1 class="tm-brand-name" style="font-weight: 19px;">My Store</h1>
+                <p class="tm-brand-description mb-0" style="font-style: italic;">Start your growth here.</p>
               </div>
             </div>
           </div>
@@ -47,7 +47,6 @@
 
               <div class="tm-portfolio-description port">
                 <h3 class="tm-text-green">
-                  <!-- <span class="tm-title-small">(2019 January to Present)</span> -->
                 </h3>
                 <p class="mb-0 port-desc-1">
                   new Company description
@@ -55,7 +54,6 @@
               </div>
               <div class="tm-portfolio-description port">
                 <h3 class="tm-text-green">
-                  <!-- <span class="tm-title-small">(2019 January to Present)</span> -->
                 </h3>
                 <p class="mb-0 port-desc-2">
                   new Company description
@@ -63,7 +61,6 @@
               </div>
               <div class="tm-portfolio-description port">
                 <h3 class="tm-text-green">
-                  <!-- <span class="tm-title-small">(2019 January to Present)</span> -->
                 </h3>
                 <p class="mb-0 port-desc-3">
                   new Company description
@@ -118,8 +115,8 @@
 
         <div class="row">
           <footer class="col-12">
-            <p class="tm-copyright-text">
-            Copyright 2023 Mini Project Page 
+            <p class="tm-copyright-text" style="position: relative;">
+            Copyright 2023 
           </footer>
         </div>
       </div>
@@ -130,13 +127,27 @@
     <script src="../static/script/landing/parallax.min.js"></script>
     <script src="../static/script/client/landing.js"></script>
     <script>
-      $('.portfolio').on('click', () => {
-        $('.port').css('display', 'inline');
-        $('.port').css('box-shadow', 'inset 600px 0 0 0 #5e5c5c');
-      })
-      $('.book').on('click', () => {
-        $('.books').css('display', 'inline');
-        $('.books').css('box-shadow', 'inset 600px 0 0 0 #5e5c5c');
+      $.ajax({
+        type: 'GET',
+        url: ' http://127.0.0.1:5000/all',
+        success: (json) => {
+              $('.portfolio').on('click', () => {
+                $('.port').css('display', 'inline');
+                $('.port').css('box-shadow', 'inset 600px 0 0 0 #5e5c5c');
+              })
+              $('.book').on('click', () => {
+                $('.books').css('display', 'inline');
+                $('.books').css('box-shadow', 'inset 600px 0 0 0 #5e5c5c');
+              })
+        },
+        error: () => {
+          $('.portfolio').on('click', () => {
+                 alert("No Profile Avaliable right now!!!")
+              })
+         $('.book').on('click', () => {
+          alert("No Books Avaliable right now!!!")
+              })
+        }
       })
     </script>
     <script>

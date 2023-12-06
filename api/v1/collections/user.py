@@ -47,6 +47,31 @@ def post_user():
     return response
 
 
+@app_collection.route('/<user_id>/user', strict_slashes=False,
+                      methods=['PUT'])
+def put_user(user_id):
+    """
+    The function `put_user` updates a user object with
+    the given user_id and saves it to the database,
+    and returns a JSON response with the user object.
+    """
+    user = dbstorage.get(User, user_id)
+    if user is None:
+        abort(404)
+    if not request.get_json():
+        abort(400, description="Not supported type")
+    ig_keys = ['id', 'created_at', 'updated_at', 'user_id']
+    data = {}
+    print(request.get_json())
+    for k, v in request.get_json().items():
+        if k not in ig_keys:
+            setattr(user, k, v)
+    user.save()
+    response = make_response(user.to_json(), 201)
+    response.headers['Access-Control-Allow-Origin'] = origin
+    return response
+
+
 @app_collection.route("/<user_id>/delete_account", strict_slashes=False,
                       methods=['DELETE'])
 def delete_user(user_id):
@@ -59,7 +84,7 @@ def delete_user(user_id):
         abort(404)
     dbstorage.delete(user)
     dbstorage.save()
-    response = make_response({"Delete": "True"}, 200)
+    response = make_response({"Deleted": True}, 200)
     response.headers['Access-Control-Allow-Origin'] = origin
     return response
 

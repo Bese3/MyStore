@@ -50,7 +50,7 @@ function listner (button, erase_list, erase_crud, type, name) {
                             url: MyServer + 'users',
                             success: (json2) => {
                                 for (let i = 0; i < json2.length; i++) {
-                                    if (json.userinfo.email === json2[i].email) {
+                                    if (json.email === json2[i].email) {
                                         user_id = json2[i].id;
                                     }
                                 }
@@ -72,7 +72,8 @@ function listner (button, erase_list, erase_crud, type, name) {
                                         $(erase_list).text("");
                                         $(erase_crud).text("");
                                         $(erase_list).html(list);
-                                        $(erase_crud).html(crud);  
+                                        $(erase_crud).html(crud);
+                                        location.reload(true)
                                     }
                                 })
                             }
@@ -98,7 +99,7 @@ function delete_item (id, name) {
                 url: MyServer + 'users',
                 success: (json2) => {
                     for (let i = 0; i < json2.length; i++) {
-                        if (json.userinfo.email === json2[i].email) {
+                        if (json.email === json2[i].email) {
                             user_id = json2[i].id;
                         }
                     }

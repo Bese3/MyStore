@@ -56,7 +56,7 @@ def post_movie(user_id):
     return response
 
 
-@app_collection.route('/<user_id>/movies/<movies_id>', strict_slashes=False,
+@app_collection.route('/<user_id>/movies/<movie_id>', strict_slashes=False,
                       methods=['DELETE'])
 def delete_movie(user_id, movie_id):
     """

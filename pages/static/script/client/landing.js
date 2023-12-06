@@ -6,7 +6,7 @@ $(document).ready(function (){
             type: 'GET',
             url: MyServer + "all",
             success: (data) => {
-                console.log(data)
+                // console.log(data)
                 let MyNameClass = '.port-' + String(i + 1);
                 let MydescClass = '.port-desc-' + String(i + 1);
                 // $(MyNameClass).text(data[0].name)

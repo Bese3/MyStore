@@ -323,11 +323,7 @@ a {
         width: auto; }
         .site-mobile-menu .site-nav-wrap[data-class="social"] > li:first-child a {
           padding-left: 15px !important; }
- /* .header {
-  padding-top: 150px;
-  padding-left: 80px;
-  color: white;
- } */
+
 
  section.contain {
   margin-top: 100px;
@@ -344,42 +340,6 @@ a {
   justify-content: center;
   margin-right: 200px;
  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* .filter_amenities {
-	display: inline;
-	vertical-align: middle;
-	height: 100%;
-	float: left;
-    width: 25%;
-
-	line-height: 20px;
-} */
-
-
-
-
 
 h2 {
 	font-size: 16px;
@@ -511,6 +471,7 @@ article:hover {
 
 li {
   list-style-type: none;
+  margin-top: 10px;
 }
 input {
   margin-bottom: 20px;

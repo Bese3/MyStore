@@ -13,7 +13,7 @@ $(document).ready(function () {
                     let users = json2;
                     let Available = false;
                     for (let i = 0; i < json2.length; i++){
-                        if (json2[i].email === json.userinfo.email) {
+                        if (json2[i].email === json.email) {
                             Available = true;
                             if (json2[i].first_name != undefined && json2[i].last_name != undefined){
                                $('.owner').text('Owner: ' + json2[i].first_name + " " + json2[i].last_name);
@@ -26,7 +26,7 @@ $(document).ready(function () {
                             type: 'POST',
                             url: MyServer + 'user',
                             contentType: "application/json",
-                            data: JSON.stringify({"email": json.userinfo.email, "password": "12345678"}),
+                            data: JSON.stringify({"email": json.email, "password": "12345678"}),
                             success: (json3) => {
                                 if (json.first_name != undefined && json.last_name != undefined){
                                    $('.owner').text('Owner: ' + json.first_name + " " + json.last_name);
