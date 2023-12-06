@@ -7,6 +7,7 @@ app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
 app.secret_key = "secret_key"
 oauth = OAuth(app)
+my_session = {}
 oauth.register(
     "google",
     client_id=getenv('client_id'),
@@ -41,7 +42,9 @@ def home():
 def authorize():
     token = oauth.google.authorize_access_token()
     session['user'] = token
-    print(session)
+    global my_session
+    my_session = session['user']
+    # print(session)
     return redirect(url_for("home"))
 
 @app.route("/landing", strict_slashes=False)
@@ -54,13 +57,16 @@ def logout():
     if 'user' in session:
         id_token = session['user']['id_token']
     session.clear()
+    global my_session
+    my_session.clear()
     return redirect(url_for('get_landing'))
 
 
 @app.route("/session", strict_slashes=False)
 def get_session():
-    print(session)
-    return(make_response(session['user']['userinfo']), 200)
+    # print(session)
+    global my_session
+    return(make_response(my_session['user']['userinfo']), 200)
 
 
 @app.route("/about", strict_slashes=False)
