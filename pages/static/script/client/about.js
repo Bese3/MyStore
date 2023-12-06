@@ -7,7 +7,7 @@ $(document).ready(function () {
     let fullname, contact;
             $.ajax({
                 type: 'GET',
-                url: 'http://52.201.220.122/session',
+                url: 'http://web-02.besufikadyilma.tech/session',
                 success: (json) => {
                     $.ajax({
                         type: 'GET',
