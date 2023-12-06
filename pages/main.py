@@ -58,7 +58,7 @@ def logout():
 
 @app.route("/session", strict_slashes=False)
 def get_session():
-    # print(session)
+    print(session)
     return(make_response(session['user']['userinfo']), 200)
 
 
