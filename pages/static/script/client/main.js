@@ -1,9 +1,9 @@
-let MyServer = "http://127.0.0.1:5001/api/v1/"
+let MyServer = "http://52.201.220.122:5001/api/v1/"
 $(document).ready(function () {
     let user_id;
     $.ajax({
         type: 'GET',
-        url: 'http://127.0.0.1:5002/session',
+        url: 'http://52.201.220.122:5002/session',
         success: (json) => {
             // console.log(json.userinfo)
             $.ajax({

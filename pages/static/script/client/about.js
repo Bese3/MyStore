@@ -3,11 +3,11 @@
 $(document).ready(function () {
     let desc = $('.description').html()
     let button = $('.crud').html()
-    let server = 'http://127.0.0.1:5001/api/v1/'
+    let server = 'http://52.201.220.122:5001/api/v1/'
     let fullname, contact;
             $.ajax({
                 type: 'GET',
-                url: 'http://127.0.0.1:5002/session',
+                url: 'http://52.201.220.122:5002/session',
                 success: (json) => {
                     $.ajax({
                         type: 'GET',
@@ -64,7 +64,7 @@ $(document).ready(function () {
             let user_id;
             $.ajax({
                 type: 'GET',
-                url: 'http://127.0.0.1:5002/session',
+                url: 'http://52.201.220.122:5002/session',
                 success: (json) => {
                     $.ajax({
                         type: 'GET',
@@ -101,7 +101,7 @@ $(document).ready(function () {
         let user_id;
         $.ajax({
             type: 'GET',
-            url: 'http://127.0.0.1:5002/session',
+            url: 'http://52.201.220.122:5002/session',
             success: (json) => {
                 $.ajax({
                     type: 'GET',
