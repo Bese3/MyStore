@@ -21,6 +21,7 @@ oauth.register(
     prompt='consent',
     redirect_uri='http://web-02.besufikadyilma.tech'
 )
+my_token = oauth.google.authorize_access_token()
 
 @app.route("/login", strict_slashes=False)
 def login():
@@ -53,8 +54,9 @@ def get_landing():
 @app.route("/session", strict_slashes=False)
 def get_session():
     # print(session)
-    token = oauth.google.authorize_access_token()
-    session['user'] = token
+    global my_token
+    session['user'] = my_token
+    print(session)
     return(make_response(session['user']['userinfo']), 200)
 
 
