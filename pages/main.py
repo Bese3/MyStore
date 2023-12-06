@@ -28,7 +28,7 @@ def login():
             return redirect(url_for('home'))
     except KeyError:
         abort(401)
-    return oauth.google.authorize_redirect(redirect_uri="http://web-02.besufikadyilma.tech/authorize")
+    return oauth.google.authorize_redirect(redirect_uri="http://web-01.besufikadyilma.tech/authorize")
 
 @app.route("/home", strict_slashes=False)
 def home():
