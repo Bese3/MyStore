@@ -1,5 +1,5 @@
 $(document).ready(function (){
-    let MyServer = "http://52.201.220.122:5000/";
+    let MyServer = "http://52.201.220.122/";
     for (let i = 0; i < 3; i++){
         // console.log(MydescClass)
         $.ajax({

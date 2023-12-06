@@ -2,7 +2,7 @@
 
 function listner (button, erase_list, erase_crud, type, name) {
     let user_id;
-    let MyServer = "http://52.201.220.122:5001/api/v1/"
+    let MyServer = "http://52.201.220.122/api/v1/"
     $(button).click(() => {
         var $this = $(this);
     let list = $(erase_list).html();
@@ -43,7 +43,7 @@ function listner (button, erase_list, erase_crud, type, name) {
                 // console.log($('input.port').val())
                 $.ajax({
                     type: 'GET',
-                    url: 'http://52.201.220.122:5002/session',
+                    url: 'http://52.201.220.122/session',
                     success: (json) => {
                         $.ajax({
                             type: 'GET',
@@ -89,10 +89,10 @@ function listner (button, erase_list, erase_crud, type, name) {
 function delete_item (id, name) {
     if (confirm("Are u sure want to delete?")){
     let user_id;
-    let MyServer = "http://52.201.220.122:5001/api/v1/"
+    let MyServer = "http://52.201.220.122/api/v1/"
     $.ajax({
         type: 'GET',
-        url: 'http://52.201.220.122:5002/session',
+        url: 'http://52.201.220.122/session',
         success: (json) => {
             $.ajax({
                 type: 'GET',
