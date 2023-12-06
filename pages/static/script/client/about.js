@@ -64,7 +64,7 @@ $(document).ready(function () {
             let user_id;
             $.ajax({
                 type: 'GET',
-                url: 'http://52.201.220.122/session',
+                url: 'http://web-02.besufikadyilma.tech/session',
                 success: (json) => {
                     $.ajax({
                         type: 'GET',
@@ -101,7 +101,7 @@ $(document).ready(function () {
         let user_id;
         $.ajax({
             type: 'GET',
-            url: 'http://52.201.220.122/session',
+            url: 'http://web-02.besufikadyilma.tech/session',
             success: (json) => {
                 $.ajax({
                     type: 'GET',
