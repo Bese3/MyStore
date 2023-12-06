@@ -41,6 +41,7 @@ def home():
 def authorize():
     token = oauth.google.authorize_access_token()
     session['user'] = token
+    print(session)
     return redirect(url_for("home"))
 
 @app.route("/landing", strict_slashes=False)
