@@ -19,6 +19,7 @@ oauth.register(
     client_kwargs={'scope': 'openid profile email'},
     jwks_uri = "https://www.googleapis.com/oauth2/v3/certs",
     prompt='consent',
+    redirect_uri='http://web-02.besufikadyilma.tech'
 )
 
 @app.route("/login", strict_slashes=False)
