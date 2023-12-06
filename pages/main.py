@@ -28,12 +28,12 @@ def login():
             return redirect(url_for('home'))
     except KeyError:
         abort(401)
-    return oauth.google.authorize_redirect(redirect_uri=url_for('authorize', _external=True))
+    return oauth.google.authorize_redirect(redirect_uri="http://web-01.besufikadyilma.tech/authorize")
 
 @app.route("/home", strict_slashes=False)
 def home():
     if 'user' not in session:
-        return oauth.google.authorize_redirect(redirect_uri=url_for('authorize', _external=True))
+        return oauth.google.authorize_redirect(redirect_uri="http://web-01.besufikadyilma.tech/authorize")
     return render_template('index.html')
 
 
@@ -65,7 +65,7 @@ def get_session():
 @app.route("/about", strict_slashes=False)
 def about():
     if 'user' not in session:
-        return oauth.google.authorize_redirect(redirect_uri=url_for('authorize', _external=True))
+        return oauth.google.authorize_redirect(redirect_uri="http://web-01.besufikadyilma.tech/authorize")
     return render_template("about.html")
 
 
