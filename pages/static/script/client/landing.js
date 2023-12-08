@@ -1,5 +1,5 @@
 $(document).ready(function (){
-    let MyServer = "http://52.201.220.122/";
+    let MyServer = "https://www.besufikadyilma.tech/";
     for (let i = 0; i < 3; i++){
         // console.log(MydescClass)
         $.ajax({
@@ -27,19 +27,3 @@ $(document).ready(function (){
     }
     
 })
-
-    // let MyServer = "http://127.0.0.1:5000/";
-    // for (let i = 0; i < 3; i++){
-    //     // console.log(MydescClass)
-    //     $.ajax({
-    //         type: 'GET',
-    //         url: MyServer + "books",
-    //         success: (data2) => {
-    //             let MyBookClass = '.book-' + String(i + 1);
-    //             let BookDescClass = '.book-desc-' + String(i + 1);
-    //             $(MyBookClass).text(data2.name)
-    //             $(BookDescClass).text(data2.author)
-    //             // $(BookDescClass)
-    //         }
-    //     })
-    // }
