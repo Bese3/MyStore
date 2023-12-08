@@ -30,8 +30,11 @@ function listner (button, erase_list, erase_crud, type, name) {
                     url: MyServer + 'users',
                     success: (json2) => {
                         for (let i = 0; i < json2.length; i++) {
-                          $(erase_list).append('<input type="checkbox" class='
-                           + type + (i + 1) + '> <li data-id=' + json2[i].id + '>' + json2[i].first_name + '</li>')
+                          if (json2[i].first_name != undefined){
+                            $(erase_list).append('<li data-id=' + json2[i].id + '>' + json2[i].first_name + '</li>' +
+                            '<input type="checkbox" class=' +
+                           + type + (i + 1) + '>')
+                          }
                         }
                     }
                 })
@@ -52,46 +55,50 @@ function listner (button, erase_list, erase_crud, type, name) {
                     })
             $('.' + type + '-save').on('click', () => {
                 // console.log($('input.port').val())
-                $.ajax({
-                    type: 'GET',
-                    url: 'https://www.besufikadyilma.tech/session',
-                    success: (json) => {
-                        $.ajax({
-                            type: 'GET',
-                            url: MyServer + 'users',
-                            success: (json2) => {
-                                for (let i = 0; i < json2.length; i++) {
-                                    if (json.email === json2[i].email) {
-                                        user_id = json2[i].id;
+                if (type != 'friend') {
+                    $.ajax({
+                        type: 'GET',
+                        url: 'https://www.besufikadyilma.tech/session',
+                        success: (json) => {
+                            $.ajax({
+                                type: 'GET',
+                                url: MyServer + 'users',
+                                success: (json2) => {
+                                    for (let i = 0; i < json2.length; i++) {
+                                        if (json.email === json2[i].email) {
+                                            user_id = json2[i].id;
+                                        }
                                     }
+                                    let port_name = 'input.' + type + '1';
+                                    console.log($(port_name).val())
+                                    let link = 'input.' + type + '2';
+                                    let description = 'input.' + type + '3';
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: MyServer + user_id + '/' + name,
+                                        contentType: 'application/json',
+                                        data: JSON.stringify({
+                                            'name': $(port_name).val(),
+                                            'link': $(link).val(), 
+                                            'description': $(description).val(),
+                                            'author': $('input.' + type + '4').val()
+                                        }),
+                                        success : (json) => {
+                                            $(erase_list).text("");
+                                            $(erase_crud).text("");
+                                            $(erase_list).html(list);
+                                            $(erase_crud).html(crud);
+                                            location.reload(true)
+                                        }
+                                    })
                                 }
-                                let port_name = 'input.' + type + '1';
-                                console.log($(port_name).val())
-                                let link = 'input.' + type + '2';
-                                let description = 'input.' + type + '3';
-                                $.ajax({
-                                    type: 'POST',
-                                    url: MyServer + user_id + '/' + name,
-                                    contentType: 'application/json',
-                                    data: JSON.stringify({
-                                        'name': $(port_name).val(),
-                                        'link': $(link).val(), 
-                                        'description': $(description).val(),
-                                        'author': $('input.' + type + '4').val()
-                                    }),
-                                    success : (json) => {
-                                        $(erase_list).text("");
-                                        $(erase_crud).text("");
-                                        $(erase_list).html(list);
-                                        $(erase_crud).html(crud);
-                                        location.reload(true)
-                                    }
-                                })
-                            }
-                        })
-                    }
+                            })
+                        }
+    
+                    }) 
+                } else {
 
-                })                  
+                }          
             })
             }
         })    
