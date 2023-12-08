@@ -19,7 +19,7 @@ oauth.register(
     client_kwargs={'scope': 'openid profile email'},
     jwks_uri = "https://www.googleapis.com/oauth2/v3/certs",
     prompt='consent',
-    redirect_uri='http://web-02.besufikadyilma.tech'
+    redirect_uri='http://www.besufikadyilma.tech'
 )
 
 
@@ -35,7 +35,7 @@ def login():
 @app.route("/home", strict_slashes=False)
 def home():
     if 'user' not in session:
-        return oauth.google.authorize_redirect(redirect_uri="http://web-02.besufikadyilma.tech/authorize")
+        return oauth.google.authorize_redirect(redirect_uri="http://www.besufikadyilma.tech/authorize")
     return render_template('index.html')
 
 
@@ -68,7 +68,7 @@ def logout():
 @app.route("/about", strict_slashes=False)
 def about():
     if 'user' not in session:
-        return oauth.google.authorize_redirect(redirect_uri="http://web-02.besufikadyilma.tech/authorize")
+        return oauth.google.authorize_redirect(redirect_uri="http://www.besufikadyilma.tech/authorize")
     return render_template("about.html")
 
 
