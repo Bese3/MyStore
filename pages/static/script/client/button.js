@@ -24,6 +24,16 @@ function listner (button, erase_list, erase_crud, type, name) {
 
             if (type != 'friend') {
             $(erase_list).append(form);
+            } else {
+                $.ajax({
+                    type: 'GET',
+                    url: MyServer + 'users',
+                    success: (json2) => {
+                        for (let i = 0; i < json2.length; i++) {
+                          $(erase_list).append('<input type="checkbox" class=' + type + (i + 1) + '>')
+                        }
+                    }
+                })
             }
 
             $(erase_crud).text("");
