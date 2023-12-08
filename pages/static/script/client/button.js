@@ -31,7 +31,7 @@ function listner (button, erase_list, erase_crud, type, name) {
                     success: (json2) => {
                         for (let i = 0; i < json2.length; i++) {
                           $(erase_list).append('<input type="checkbox" class='
-                           + type + (i + 1) + '> <li data-id=' + json2.id + '>' + json2.first_name + '</li>')
+                           + type + (i + 1) + '> <li data-id=' + json2[i].id + '>' + json2[i].first_name + '</li>')
                         }
                     }
                 })
