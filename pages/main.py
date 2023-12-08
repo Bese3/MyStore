@@ -3,10 +3,9 @@ from flask import Flask, make_response, url_for, redirect, render_template, sess
 from authlib.integrations.flask_client import OAuth
 from os import getenv
 from flask_cors import CORS
-from uuid import uuid4
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
-app.secret_key = uuid4()
+app.secret_key = "secret"
 oauth = OAuth(app)
 oauth.register(
     "google",
