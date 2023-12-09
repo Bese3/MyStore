@@ -30,7 +30,7 @@ function listner (button, erase_list, erase_crud, type, name) {
                     url: MyServer + 'users',
                     success: (json2) => {
                         for (let i = 0; i < json2.length; i++) {
-                          if (json2[i].first_name != undefined){
+                          if (json2[i].first_name != undefined ){
                             $(erase_list).append('<li data-id=' + json2[i].id + '>' +
                             '<input type="checkbox" class=' +
                            + type + (i + 1) + '>' + json2[i].first_name + '</>')
@@ -154,9 +154,9 @@ $(document).ready(function () {
    $('.music-delete').click(() => {
     delete_item($('.music-list input[type="radio"]:checked').val(), 'musics')
    })
-//    $('.friend-delete').click(() => {
-//     delete_item($('.port-list input[type="radio"]:checked').val(), 'portfolios')
-//    })
+   $('.friend-delete').click(() => {
+    delete_item($('.friend-list input[type="checkbox"]:checked').val(), 'portfolios')
+   })
    $('.hobby-delete').click(() => {
     delete_item($('.hobby-list input[type="radio"]:checked').val(), 'hobbies')
    })
