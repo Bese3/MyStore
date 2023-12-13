@@ -27,8 +27,8 @@ class User(Base, base):
     movies = relationship('Movie', backref='user',
                           cascade='all, delete')
     portfolios = relationship('Portfolio', backref='user',
-                          cascade='all, delete')
+                              cascade='all, delete')
     friends = relationship('Friend', backref='user',
-                          cascade='all, delete')
+                           cascade='all, delete')
     hobbies = relationship('Hobby', backref='user',
-                          cascade='all, delete')
+                           cascade='all, delete')

@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 """
-user friend API
+user Friend API
 """
 from api.v1.collections import app_collection
-from flask import make_response, jsonify, abort, request
+from flask import make_response, abort, request
 from mods.user import User
 from mods.friend import Friend
 from mods import dbstorage
-origin = "*"
+origin = "*"  # used to allow `Access-Control-Allow-origin` header
 
 
 @app_collection.route('/users', strict_slashes=False,
@@ -117,6 +117,11 @@ def post_friends(user_id, friend_id):
         'friend_id': friend_id
     }
     my_friend = Friend(**new_dict)
+    try:
+        my_friend.friend_valid()
+    except ValueError as e:
+        abort(make_response({"error": e}), 400)
+
     dbstorage.new(my_friend)
     my_friend.save()
     response = make_response(my_friend.to_json(), 201)

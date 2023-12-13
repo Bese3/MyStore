@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+WSGI for the REST API
+"""
 from flask import Flask, make_response
 from api.v1.collections import app_collection
 from flask_cors import CORS

@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 """
-db storage for models
+common db storage for models
 """
 from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy.orm import declarative_base
-# from os import getenv
 import MySQLdb
+from os import getenv
 from mods.book import Book
 from mods.friend import Friend
 from mods.hobby import Hobby
@@ -27,7 +27,12 @@ classes = {
 
 class DBStorage:
     """
-    class starts here
+    The `DBStorage` class is a Python class that provides methods
+    for interacting with a MySQL database, including creating a new
+    database, retrieving instances of a specified class, adding new objects,
+    retrieving objects based on class name and ID, retrieving relations
+    from the database, saving new objects, reloading the session object,
+    deleting objects from the database, and closing the session.
     """
     __session = None
     __engine = None
@@ -39,7 +44,8 @@ class DBStorage:
         doesn't already exist.
         """
         connect = MySQLdb.connect(host="localhost", port=3306,
-                                  user="mystore_dev", passwd="mystore_dev_pwd",
+                                  user="mystore_dev",
+                                  passwd=str(getenv("mystore_pwd")),
                                   charset="utf8")
         cursor = connect.cursor()
         cursor.execute("CREATE DATABASE IF NOT EXISTS mystore_dev_db")
@@ -48,7 +54,7 @@ class DBStorage:
         connect.close()
         self.__engine = create_engine('mysql+mysqldb://'
                                       '{}:{}@{}:3306/{}'.format('mystore_dev',
-                                                                'mystore_dev_pwd',
+                                                                str(getenv("mystore_pwd")),
                                                                 'localhost',
                                                                 'mystore_dev_db'))
 
@@ -72,14 +78,14 @@ class DBStorage:
 
     def new(self, obj):
         """
-        adding new object
+        The function "new" adds a new object to the session.
         """
         self.__session.add(obj)
 
     def get(self, cls, id):
         """
-        Returns the object based on the class name and its ID, or
-        None if not found
+        The function returns an object based on the class name and
+        its ID, or None if not found.
         """
         if cls not in classes.values():
             return None
@@ -99,18 +105,20 @@ class DBStorage:
         """
         if cls not in classes.values():
             return None
-        my_query = self.__session.query(cls).filter(eval("User." + sub_class)).filter(User.id==id).all()
+        my_query = self.__session.query(cls).filter(eval("User." + sub_class)).filter(User.id == id).all()
         return my_query
 
     def save(self):
         """
-        saving new object
+        The save function is used to save a new object by
+        committing changes to the session.
         """
         self.__session.commit()
 
     def reload(self):
         """
-        reloading session object
+        The `reload` function creates all the necessary tables
+        in the database and initializes a new session object.
         """
         base.metadata.create_all(self.__engine)
         self.__session = scoped_session(sessionmaker(bind=self.__engine,
@@ -118,7 +126,7 @@ class DBStorage:
 
     def delete(self, obj=None):
         """
-        deleting an object from database
+        The function deletes an object from a database.
         """
         if obj is None:
             return
@@ -126,7 +134,7 @@ class DBStorage:
 
     def close(self):
         """
-        closing session
+        The close function closes the session and reloads it.
         """
         self.__session.close()
         self.reload()

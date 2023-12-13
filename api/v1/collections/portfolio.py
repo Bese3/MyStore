@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 """
-user portfolio API
+user Portfolio API
 """
 from api.v1.collections import app_collection
 from api.v1.collections.user import origin
-from flask import make_response, jsonify, abort, request
+from flask import make_response, abort, request
 from mods.user import User
 from mods.portifolio import Portfolio
 from mods import dbstorage
@@ -61,8 +61,8 @@ def post_portfolio(user_id):
                       methods=['DELETE'])
 def delete_portfolio(user_id, portfolio_id):
     """
-    The function deletes a friend from the database
-    based on the user_id and friend_id provided.
+    The function deletes a portifolio from the database
+    based on the user_id and portfolio_id provided.
     """
     user = dbstorage.get(User, user_id)
     if user is None:

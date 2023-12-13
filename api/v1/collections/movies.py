@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 """
-user hobby API
+user Movie API
 """
 from api.v1.collections import app_collection
 from api.v1.collections.user import origin
-from flask import make_response, jsonify, abort, request
+from flask import make_response, abort, request
 from mods.user import User
 from mods.movie import Movie
 from mods import dbstorage

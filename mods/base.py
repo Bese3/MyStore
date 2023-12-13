@@ -1,10 +1,9 @@
 #!/usr/bin/python3
 """
-base for all data types
+base object for all data types
 """
 from uuid import uuid4
 from datetime import datetime
-# from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy.orm import declarative_base
 base = declarative_base()
@@ -87,6 +86,10 @@ class Base():
         del self
 
     def __str__(self):
+        """
+        The function returns a string representation of an object,
+        including its class name, id, and JSON representation.
+        """
         cls = (str(type(self)).split('.')[-1]).split('\'')[0]
         my_dic = {}
         return '[{}] ({}) {}'.format(

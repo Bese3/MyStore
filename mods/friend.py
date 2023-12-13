@@ -19,9 +19,13 @@ class Friend(Base, base):
                      nullable=False, primary_key=True)
     friend_id = Column(String(60), nullable=False,
                        primary_key=True)
-    # strorage querying for friend id needed
 
     def friend_valid(self):
+        """
+        The function `friend_valid` checks if a friend is
+        valid by ensuring that the friend is not the same
+        as the user and that the friend exists in the list of all users.
+        """
         from mods import dbstorage
         all_users_id = [i.id for i in dbstorage.all(User).values()]
         if self.friend_id == self.user_id:
